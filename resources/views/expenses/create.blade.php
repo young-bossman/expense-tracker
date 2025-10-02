@@ -32,10 +32,15 @@
                             <label class="block font-medium text-sm text-gray-700">Category</label>
                             <input type="text" name="category" class="border rounded w-full p-2">
                         </div>
+                             <div class="flex gap-2 mt-4">
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
 
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
-                            Save
-                        </button>
+    <a href="{{ route('expenses.index') }}" 
+       class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">
+        Cancel
+    </a>
+                                </div>
+
                     </form>
 
                 </div>

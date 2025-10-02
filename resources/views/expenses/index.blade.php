@@ -10,10 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <a href="{{ route('expenses.create') }}" 
-                       class="bg-blue-600 text-white px-4 py-2 rounded">
-                        + Add Expense
-                    </a>
+                  <a href="{{ route('expenses.create') }}" 
+   class="bg-blue-600 text-black hover:bg-red-700 px-4 py-2 rounded shadow">
+    + Add Expense
+</a>
+
 
                     @if(session('success'))
                         <div class="bg-green-100 text-green-800 p-2 rounded mt-4">
