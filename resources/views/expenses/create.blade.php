@@ -20,7 +20,7 @@
                     <div class="mb-4 grid grid-cols-2 gap-4">
                         <div>
                             <x-input-label for="amount" :value="__('Amount')" />
-                            <x-text-input id="amount" name="amount" type="number" step="0.01" class="block mt-1 w-full" required />
+                            <x-text-input id="amount" name="amount" type="number" step="0.10" class="block mt-1 w-full" required />
                             <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                         </div>
                         <div>

@@ -70,6 +70,7 @@ class ExpenseController extends Controller
         $tagNames = array_filter(array_map('trim', explode(',', $request->tags)));
         $tagIds = [];
         foreach ($tagNames as $name) {
+             if ($name === '') continue;
             $tag = Tag::firstOrCreate(['user_id' => auth()->id(), 'name' => $name]);
             $tagIds[] = $tag->id;
         }
@@ -82,13 +83,16 @@ class ExpenseController extends Controller
 
     public function edit(Expense $expense)
 {
-    if ($expense->user_id !== auth()->id()) abort(403);
+    if ($expense->user_id !== auth()->id()) { 
+        abort(403);
+    }
 
     $categories = Category::whereNull('user_id')
         ->orWhere('user_id', auth()->id())
         ->orderBy('name')
         ->get();
 
+    // prepare tags as comma-separated string
     $tagList = $expense->tags->pluck('name')->join(', ');
 
     return view('expenses.edit', compact('expense', 'categories', 'tagList'));

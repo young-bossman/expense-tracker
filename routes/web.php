@@ -4,15 +4,23 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseController;
 
+use App\Http\Controllers\DashboardController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
 // Public route
 Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 // Dashboard (requires auth + email verification)
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
 
 // Expense routes (protected by auth)
 Route::middleware(['auth'])->group(function () {

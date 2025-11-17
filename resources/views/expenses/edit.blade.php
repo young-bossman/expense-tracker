@@ -24,11 +24,20 @@
                         </div>
 
                         <div>
-                            <x-input-label for="date" :value="__('Date')" />
-                           <td class="p-3">{{ \Carbon\Carbon::parse($expense->date)->format('Y-m-d') }}</td>
-                            <x-input-error :messages="$errors->get('date')" class="mt-2" />
-                        </div>
-                    </div>
+    <x-input-label for="date" :value="__('Date')" />
+    
+    <x-text-input 
+        id="date" 
+        class="block mt-1 w-full" 
+        type="date" 
+        name="date" 
+        value="{{ old('date', \Carbon\Carbon::parse($expense->date)->format('Y-m-d')) }}" 
+        required 
+    />
+
+    <x-input-error :messages="$errors->get('date')" class="mt-2" />
+</div>
+
 
                     <!-- Category -->
                     <div class="mb-4">
